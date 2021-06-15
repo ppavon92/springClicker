@@ -5,9 +5,7 @@ import es.iesrafaelalberti.daw.dwes.clickcompetitionbase.repositories.PlayerRepo
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -16,6 +14,37 @@ public class PlayerController {
     @Autowired
     private PlayerRepository playerRepository;
 
+    @PostMapping("/player")
+    public ResponseEntity<?> playerAdd(@RequestParam("name") String name,
+                                       @RequestParam("clicks") int clicks) {
+        Player newPlayer = new Player(name, clicks, null);
+        playerRepository.save(newPlayer);
+        return new ResponseEntity<>(newPlayer, HttpStatus.OK);
+    }
+
+    @PostMapping("/player/add")
+    public ResponseEntity<?> playerAdd(@RequestBody Player newPlayer) {
+        playerRepository.save(newPlayer);
+        return new ResponseEntity<>(newPlayer, HttpStatus.OK);
+    }
+
+    @PutMapping("/player/{id}")
+    public ResponseEntity<?> playerUpdate(@PathVariable("id") Long id,
+                                          @RequestBody Player newPlayer) {
+        playerRepository.findById(id).orElseThrow(() -> new EntityNotFoundException());
+        newPlayer.setId(id);
+        playerRepository.save(newPlayer);
+        return new ResponseEntity<>(newPlayer, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/player/{id}")
+    public ResponseEntity<?> playerDelete(@PathVariable("id") Long id) {
+        Player oldPlayer = playerRepository.findById(id)
+                                           .orElseThrow(() -> new EntityNotFoundException());
+        playerRepository.delete(oldPlayer);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+    
     @GetMapping("/players")
     public ResponseEntity<Object> playerList() {
         return new ResponseEntity<>(playerRepository.findAll(), HttpStatus.OK);
