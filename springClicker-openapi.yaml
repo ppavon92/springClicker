@@ -1,0 +1,443 @@
+openapi: "3.0.3"
+info:
+  title: "springClicker API"
+  description: "springClicker API"
+  version: "1.0.0"
+servers:
+  - url: "https://springClicker"
+paths:
+  /addclicks/{playerid}:
+    post:
+      summary: "POST addclicks/{playerid}"
+      operationId: "addClicks"
+      parameters:
+        - name: "playerid"
+          in: "path"
+          required: true
+          schema:
+            type: "number"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+  /cities:
+    get:
+      summary: "GET cities"
+      operationId: "cityList"
+      responses:
+        "200":
+          description: "OK"
+  /city:
+    post:
+      summary: "POST city"
+      operationId: "cityAdd"
+      parameters:
+        - name: "name"
+          in: "query"
+          required: true
+          schema:
+            type: "string"
+        - name: "clicks"
+          in: "query"
+          required: true
+          schema:
+            type: "number"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+  /city/add:
+    post:
+      summary: "POST city/add"
+      operationId: "cityAdd"
+      responses:
+        "200":
+          description: "OK"
+  /city/{id}:
+    put:
+      summary: "PUT city/{id}"
+      operationId: "cityUpdate"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "number"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+    delete:
+      summary: "DELETE city/{id}"
+      operationId: "cityDelete"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "number"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+  /city/{name}:
+    get:
+      summary: "GET city/{name}"
+      operationId: "cityDetail"
+      parameters:
+        - name: "name"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "OK"
+  /cityclassification:
+    get:
+      summary: "GET cityclassification"
+      operationId: "cityClassification"
+      responses:
+        "200":
+          description: "OK"
+  /cityclasswcityinfo:
+    get:
+      summary: "GET cityclasswcityinfo"
+      operationId: "cityclasswCityInfo"
+      responses:
+        "200":
+          description: "OK"
+  /countries:
+    get:
+      summary: "GET countries"
+      operationId: "countryList"
+      responses:
+        "200":
+          description: "OK"
+  /country:
+    post:
+      summary: "POST country"
+      operationId: "countryAdd"
+      parameters:
+        - name: "name"
+          in: "query"
+          required: true
+          schema:
+            type: "string"
+        - name: "clicks"
+          in: "query"
+          required: true
+          schema:
+            type: "number"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+  /country/add:
+    post:
+      summary: "POST country/add"
+      operationId: "countryAdd"
+      responses:
+        "200":
+          description: "OK"
+  /country/{id}:
+    put:
+      summary: "PUT country/{id}"
+      operationId: "countryUpdate"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "number"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+    delete:
+      summary: "DELETE country/{id}"
+      operationId: "countryDelete"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "number"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+  /country/{name}:
+    get:
+      summary: "GET country/{name}"
+      operationId: "countryByName"
+      parameters:
+        - name: "name"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "OK"
+  /countryclassification:
+    get:
+      summary: "GET countryclassification"
+      operationId: "countryClassification"
+      responses:
+        "200":
+          description: "OK"
+  /player:
+    post:
+      summary: "POST player"
+      operationId: "playerAdd"
+      parameters:
+        - name: "name"
+          in: "query"
+          required: true
+          schema:
+            type: "string"
+        - name: "clicks"
+          in: "query"
+          required: true
+          schema:
+            type: "number"
+            format: "int32"
+      responses:
+        "200":
+          description: "OK"
+  /player/add:
+    post:
+      summary: "POST player/add"
+      operationId: "playerAdd"
+      responses:
+        "200":
+          description: "OK"
+  /player/from/{name}:
+    get:
+      summary: "GET player/from/{name}"
+      operationId: "playerByCity"
+      parameters:
+        - name: "name"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "OK"
+  /player/morethan/{clicks}:
+    get:
+      summary: "GET player/morethan/{clicks}"
+      operationId: "bestPlayers"
+      parameters:
+        - name: "clicks"
+          in: "path"
+          required: true
+          schema:
+            type: "number"
+            format: "int32"
+      responses:
+        "200":
+          description: "OK"
+  /player/{id}:
+    get:
+      summary: "GET player/{id}"
+      operationId: "playerDetail"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "number"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+    put:
+      summary: "PUT player/{id}"
+      operationId: "playerUpdate"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "number"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+    delete:
+      summary: "DELETE player/{id}"
+      operationId: "playerDelete"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "number"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+  /playerbycity:
+    get:
+      summary: "GET playerbycity"
+      operationId: "groupPlayerByCity"
+      responses:
+        "200":
+          description: "OK"
+  /players:
+    get:
+      summary: "GET players"
+      operationId: "playerList"
+      responses:
+        "200":
+          description: "OK"
+  /state:
+    post:
+      summary: "POST state"
+      operationId: "stateAdd"
+      parameters:
+        - name: "name"
+          in: "query"
+          required: true
+          schema:
+            type: "string"
+        - name: "clicks"
+          in: "query"
+          required: true
+          schema:
+            type: "number"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+  /state/add:
+    post:
+      summary: "POST state/add"
+      operationId: "stateAdd"
+      responses:
+        "200":
+          description: "OK"
+  /state/{id}:
+    put:
+      summary: "PUT state/{id}"
+      operationId: "stateUpdate"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "number"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+    delete:
+      summary: "DELETE state/{id}"
+      operationId: "stateDelete"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "number"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+  /stateclassification:
+    get:
+      summary: "GET stateclassification"
+      operationId: "stateClassification"
+      responses:
+        "200":
+          description: "OK"
+  /states:
+    get:
+      summary: "GET states"
+      operationId: "stateList"
+      responses:
+        "200":
+          description: "OK"
+  /team:
+    post:
+      summary: "POST team"
+      operationId: "teamAdd"
+      parameters:
+        - name: "name"
+          in: "query"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "OK"
+  /team/add:
+    post:
+      summary: "POST team/add"
+      operationId: "teamAdd"
+      responses:
+        "200":
+          description: "OK"
+  /team/{id}:
+    put:
+      summary: "PUT team/{id}"
+      operationId: "teamUpdate"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "number"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+    delete:
+      summary: "DELETE team/{id}"
+      operationId: "teamDelete"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "number"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+  /team/{name}:
+    get:
+      summary: "GET team/{name}"
+      operationId: "teamByName"
+      parameters:
+        - name: "name"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "OK"
+  /team/{name}/players:
+    get:
+      summary: "GET team/{name}/players"
+      operationId: "playerByTeamByName"
+      parameters:
+        - name: "name"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "OK"
+  /teams:
+    get:
+      summary: "GET teams"
+      operationId: "teamList"
+      responses:
+        "200":
+          description: "OK"
